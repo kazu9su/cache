@@ -59,12 +59,12 @@ class CacheTest extends TestCase
         $cache->put($key2, $value2);
         $cache->put($key3, $value3);
         // access some elements more often
-        $cache->get($key2);
-        $cache->get($key2);
-        $cache->get($key3);
+        $this->assertEquals($value1, $cache->get($key1));
+        $this->assertEquals($value2, $cache->get($key2));
+        $this->assertEquals($value3, $cache->get($key3));
         $value4 = 'value4forkey4';
         $cache->put($key3, $value4);
-        $this->assertEquals($cache->get($key3), $value4);
+        $this->assertEquals($value4, $cache->get($key3));
     }
 
 }
